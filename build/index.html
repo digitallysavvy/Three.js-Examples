@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Three.js Youtube Crash Course</title>
+	<!-- fix for missing fav.ico error -->
+	<link rel="shortcut icon" href=""> 
+	<style type="text/css">
+		body {
+			margin: 0;
+			
+		}
+		canvas {
+				width: 100%;
+				height: 100%;
+			};
+	</style>
+	<script type="text/javascript" src="js/three.min.js"></script>
+	<!-- 
+		TUTORIAL VIDEOS 
+			- PART 1 (setup) 											https://www.youtube.com/watch?v=YKzyhcyAijo
+			- PART 2 (draw geometry) 							https://www.youtube.com/watch?v=WRQey_qpJls
+			- PART 3 (update viewport on resize) 	https://www.youtube.com/watch?v=r4bepZ2PEUw
+			- PART 4 (controls)										https://www.youtube.com/watch?v=rR88qSgmPOw
+			- PART 5 (textures and colors)				https://www.youtube.com/watch?v=l77yAZ0E950
+
+	-->
+
+</head>
+<body>
+	<!-- always add within the body tag ... will not work anywehere outside body -->
+	<script type="text/javascript">
+		// declare new scene
+		var scene = new THREE.Scene(); 
+		
+		// define camera - (field of view, layout ratio of browser, near clipping plane,  far clipping plane)
+		// clipping plane examples (http://bit.ly/2shp64K)
+		var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); //  ... alternatively could use ortho cam
+
+		// setup renderer
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight ); // set renderer scale
+
+		// add renderer to DOM
+		document.body.appendChild(renderer.domElement);
+
+
+		// ----------------------------------------------------------------------- //
+		// PART 3 ----- START
+
+		window.addEventListener('resize',function() {
+			var width = window.innerWidth;
+			var height = window.innerHeight;
+			renderer.setSize(width, height); // set the renderer size
+			camera.aspect = width/height; // update the camera aspect ratio
+			camera.updateProjectionMatrix(); // update matrix containing projection - https://threejs.org/docs/index.html#api/cameras/Camera
+		});
+
+		//  END ------ PART 3
+		// ----------------------------------------------------------------------- //
+
+
+		
+		// ----------------------------------------------------------------------- //
+		// PART 2 ----- START
+
+		// create geometry
+		var geometry = new THREE.BoxGeometry(1, 1, 1);  // https://threejs.org/docs/index.html#api/geometries/BoxGeometry
+
+		// create material, can be color / image texture
+		var material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ); // material takes object
+
+		// create cube using geometry and material
+		var cube = new THREE.Mesh(geometry, material);
+		scene.add(cube); // add cube to scene
+
+		// change camera position
+		camera.position.z = 3;
+ 
+		// END ------ PART 2
+		// ----------------------------------------------------------------------- //
+
+
+		// setup update method -- gets called on every frame (see below)
+		var update = function() {
+			// do something
+
+			// PART 2
+			cube.rotation.x += 0.01;
+			cube.rotation.y += 0.005;
+		};
+
+		// setup render function
+		var render = function() {
+			renderer.render(scene, camera); // draw scene ... add scene and camera to render method
+		};
+
+		// a loop that dicatates functionailty - google Game loop concept
+		// run game loop (update, render, repeat)
+		var GameLoop = function() {
+			requestAnimationFrame(GameLoop);
+			update(); // do some updates to content
+			render(); // call render method
+		};
+
+		// call game loop 
+		GameLoop();
+
+
+	</script>
+</body>
+</html>
