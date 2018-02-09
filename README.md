@@ -7,6 +7,7 @@ TUTORIAL VIDEOS
  - PART 3 (update viewport on resize) 	https://www.youtube.com/watch?v=r4bepZ2PEUw
  - PART 4 (controls)										https://www.youtube.com/watch?v=rR88qSgmPOw
  - PART 5 (textures and colors)					https://www.youtube.com/watch?v=l77yAZ0E950
+ - PART 6 (lighting)										https://www.youtube.com/watch?v=4njnviuvt1Q
 
 
 Three.js Dependancy is a submodule, using official Three.js repo
