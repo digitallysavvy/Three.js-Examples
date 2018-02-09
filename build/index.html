@@ -15,16 +15,6 @@
 			};
 	</style>
 	<script type="text/javascript" src="js/three.min.js"></script>
-	<!-- 
-		TUTORIAL VIDEOS 
-			- PART 1 (setup) 											https://www.youtube.com/watch?v=YKzyhcyAijo
-			- PART 2 (draw geometry) 							https://www.youtube.com/watch?v=WRQey_qpJls
-			- PART 3 (update viewport on resize) 	https://www.youtube.com/watch?v=r4bepZ2PEUw
-			- PART 4 (controls)										https://www.youtube.com/watch?v=rR88qSgmPOw
-			- PART 5 (textures and colors)				https://www.youtube.com/watch?v=l77yAZ0E950
-
-	-->
-
 </head>
 <body>
 	<!-- always add within the body tag ... will not work anywehere outside body -->
@@ -42,23 +32,6 @@
 
 		// add renderer to DOM
 		document.body.appendChild(renderer.domElement);
-
-
-		// ----------------------------------------------------------------------- //
-		// PART 3 ----- START
-
-		window.addEventListener('resize',function() {
-			var width = window.innerWidth;
-			var height = window.innerHeight;
-			renderer.setSize(width, height); // set the renderer size
-			camera.aspect = width/height; // update the camera aspect ratio
-			camera.updateProjectionMatrix(); // update matrix containing projection - https://threejs.org/docs/index.html#api/cameras/Camera
-		});
-
-		//  END ------ PART 3
-		// ----------------------------------------------------------------------- //
-
-
 		
 		// ----------------------------------------------------------------------- //
 		// PART 2 ----- START
