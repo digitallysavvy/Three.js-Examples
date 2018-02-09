@@ -15,16 +15,6 @@
 			};
 	</style>
 	<script type="text/javascript" src="js/three.min.js"></script>
-	<!-- 
-		TUTORIAL VIDEOS 
-			- PART 1 (setup) 											https://www.youtube.com/watch?v=YKzyhcyAijo
-			- PART 2 (draw geometry) 							https://www.youtube.com/watch?v=WRQey_qpJls
-			- PART 3 (update viewport on resize) 	https://www.youtube.com/watch?v=r4bepZ2PEUw
-			- PART 4 (controls)										https://www.youtube.com/watch?v=rR88qSgmPOw
-			- PART 5 (textures and colors)				https://www.youtube.com/watch?v=l77yAZ0E950
-
-	-->
-
 </head>
 <body>
 	<!-- always add within the body tag ... will not work anywehere outside body -->
@@ -43,50 +33,9 @@
 		// add renderer to DOM
 		document.body.appendChild(renderer.domElement);
 
-
-		// ----------------------------------------------------------------------- //
-		// PART 3 ----- START
-
-		window.addEventListener('resize',function() {
-			var width = window.innerWidth;
-			var height = window.innerHeight;
-			renderer.setSize(width, height); // set the renderer size
-			camera.aspect = width/height; // update the camera aspect ratio
-			camera.updateProjectionMatrix(); // update matrix containing projection - https://threejs.org/docs/index.html#api/cameras/Camera
-		});
-
-		//  END ------ PART 3
-		// ----------------------------------------------------------------------- //
-
-
-		
-		// ----------------------------------------------------------------------- //
-		// PART 2 ----- START
-
-		// create geometry
-		var geometry = new THREE.BoxGeometry(1, 1, 1);  // https://threejs.org/docs/index.html#api/geometries/BoxGeometry
-
-		// create material, can be color / image texture
-		var material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ); // material takes object
-
-		// create cube using geometry and material
-		var cube = new THREE.Mesh(geometry, material);
-		scene.add(cube); // add cube to scene
-
-		// change camera position
-		camera.position.z = 3;
- 
-		// END ------ PART 2
-		// ----------------------------------------------------------------------- //
-
-
 		// setup update method -- gets called on every frame (see below)
 		var update = function() {
 			// do something
-
-			// PART 2
-			cube.rotation.x += 0.01;
-			cube.rotation.y += 0.005;
 		};
 
 		// setup render function
