@@ -66,10 +66,24 @@
 		// PART 2 ----- START
 
 		// create geometry
-		var geometry = new THREE.BoxGeometry(1, 1, 1);  // https://threejs.org/docs/index.html#api/geometries/BoxGeometry
+		var geometry = new THREE.BoxGeometry(1.5, 1.5, 1.5);  // https://threejs.org/docs/index.html#api/geometries/BoxGeometry
 
+		// Part 5 - add array of materials - can mix and match colors and textures
+		var cubeMaterials = [
+			new THREE.MeshBasicMaterial({ color: 0x0032b5, side: THREE.DoubleSide }), 																				// right side
+			new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('img/green.jpg'), side: THREE.BackSide }), 		// left side
+			new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('img/orange.jpg'), side: THREE.DoubleSide }),		// top side
+			new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('img/purple.jpg'), side: THREE.DoubleSide }),		// bottom side
+			new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('img/red.jpg'), side: THREE.DoubleSide }),			// front side
+			new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('img/yellow.jpg'), side: THREE.DoubleSide }),		// back side
+		];
+
+		// PART 5
+		var material = new THREE.MeshFaceMaterial(cubeMaterials);
+		
+		// PART 2 / REPLACED in PART 5
 		// create material, can be color / image texture
-		var material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ); // material takes object
+		// var material = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } ); // material takes object
 
 		// create cube using geometry and material
 		var cube = new THREE.Mesh(geometry, material);
